@@ -12,23 +12,39 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function getDiscussions() {
+    let commentIds = [];
     fetch(discussionEndPoint)
     .then(res => res.json())
     .then(json => {
     // JSON data will be nested due to Serializer
     json.data.forEach(discussion => {
-        console.log(discussion.relationships.comments)
-
+    //    console.log(discussion.relationships.comments.data[0].id)
+  
         
+    // console.log(discussion.relationships.comments.data[0].id)
+    // console.log(discussion)
+    // console.log(discussion.relationships.comments.data.length)
+       let numberOfCommentsPerDiscussion = discussion.relationships.comments.data.length
 
-        
-        
-    let newDiscussion = new Discussion(discussion, discussion.attributes)
+    if (numberOfCommentsPerDiscussion > 0){
+    //     console.log(discussion)
+    let commentId = discussion.relationships.comments.data[0].id
 
-    document.querySelector('#discussion-container').innerHTML += newDiscussion.render()
-      })
-    })
+        for (i = 0; i >= numberOfCommentsPerDiscussion; i++){
+            commentIds.push(commentId)
+        }
+
+        let newDiscussion = new Discussion(discussion, discussion.attributes, commentIds)
+        document.querySelector('#discussion-container').innerHTML += newDiscussion.render()
+    }
+    else {
+        let newDiscussion = new Discussion(discussion, discussion.attributes, commentIds)
+        document.querySelector('#discussion-container').innerHTML += newDiscussion.render()
+    }
+})
+})
 }
+
 
 function getComments() {
     fetch(commentEndPoint)
@@ -36,8 +52,9 @@ function getComments() {
     .then(json => {
     // JSON data will be nested due to Serializer
     json.data.forEach(comment => {
-    let newComment = new Comment(comment, comment.attributes)
-    document.querySelector('#comment-container').innerHTML += newComment.render()
+    discussionId = comment.relationships.discussion.data.id
+    let newComment = new Comment(comment, comment.attributes, discussionId)
+    // document.querySelector('#comment-container').innerHTML += newComment.render()
       })
     })
 }
