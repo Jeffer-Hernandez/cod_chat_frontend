@@ -7,19 +7,29 @@ class Discussion {
         this.comments = commentIds
         
         Discussion.all.push(this)
+        
+    }
+
+    getCommentIds(){
+        return this.comments
     }
 
 
+    findCommentById(id){
+        comment = Comment.findById(id)
+        
+
+    }
 
   
-    render(){
+    render(comment){
         return  `
         <div data-id=${this.id}>
                 
         <h3>discussion: ${this.title}</h3>
 
 
-        <h3>comments: ${this.comments}</h3>
+        <h3>comments: ${comment}</h3>
 
         </div>
         <br><br>`;              
