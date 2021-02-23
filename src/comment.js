@@ -1,10 +1,10 @@
 class Comment {
 
-    constructor(comment, commentAttributes){
+    constructor(commentData, commentDataAttributes){
 
-        this.id = comment.id
-        this.content = commentAttributes.content
-        this.discussion = commentAttributes.discussion
+        this.id = commentData.id
+        this.content = commentDataAttributes.content
+        this.discussion = commentDataAttributes.discussion
         Comment.all.push(this)
     }
 
@@ -15,10 +15,7 @@ class Comment {
     render(){
         return  `
                 <div data-id=${this.id}>
-                
-                <h3>discussion: ${this.discussion.title}</h3>
-                <h3>comment:${this.content}</h3>
-                <button data-id=${this.id} type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <h3>comment: ${this.content}</h3>
                 </div>
                 <br><br>`;  
     }
