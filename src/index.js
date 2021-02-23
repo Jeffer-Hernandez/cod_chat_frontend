@@ -3,6 +3,7 @@ const commentEndPoint = "http://localhost:3000/api/v1/comments";
 
 document.addEventListener('DOMContentLoaded', () => {
   getDiscussions()
+  getComments()
 
   const createCommentForm = document.querySelector("#create-comment-form")
   createCommentForm.addEventListener("submit", (e) => createFormHandler(e))
@@ -16,8 +17,27 @@ function getDiscussions() {
     .then(json => {
     // JSON data will be nested due to Serializer
     json.data.forEach(discussion => {
+        console.log(discussion.relationships.comments)
+
+        
+
+        
+        
     let newDiscussion = new Discussion(discussion, discussion.attributes)
+
     document.querySelector('#discussion-container').innerHTML += newDiscussion.render()
+      })
+    })
+}
+
+function getComments() {
+    fetch(commentEndPoint)
+    .then(res => res.json())
+    .then(json => {
+    // JSON data will be nested due to Serializer
+    json.data.forEach(comment => {
+    let newComment = new Comment(comment, comment.attributes)
+    document.querySelector('#comment-container').innerHTML += newComment.render()
       })
     })
 }
