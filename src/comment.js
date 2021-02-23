@@ -1,10 +1,10 @@
 class Comment {
 
-    constructor(commentData, commentDataAttributes){
+    constructor(comment, commentAttributes){
 
-        this.id = commentData.id
-        this.content = commentDataAttributes.content
-        this.discussion = commentDataAttributes.discussion
+        this.id = comment.id
+        this.content = commentAttributes.content
+        this.discussion = commentAttributes.discussion
         Comment.all.push(this)
     }
 
