@@ -1,10 +1,10 @@
 class Comment {
 
-    constructor(comment, commentAttributes){
+    constructor(comment, commentAttributes, discussionId){
 
         this.id = comment.id
         this.content = commentAttributes.content
-        this.discussion = commentAttributes.discussion
+        this.discussion = discussionId
         Comment.all.push(this)
     }
 
@@ -12,13 +12,15 @@ class Comment {
         return this.all.find(comment => id === id);
     }
 
-    render(){
-        return  `
-                <div data-id=${this.id}>
-                <h3>comment: ${this.content}</h3>
-                </div>
-                <br><br>`;  
-    }
+    
+
+    // render(){
+    //     return  `
+    //     <div data-id=${this.id}>
+    //     <h3>comment: ${this.content}</h3>
+    //     </div>
+    //     <br><br>`;             
+    // }
 
 
     renderUpdateForm() {
