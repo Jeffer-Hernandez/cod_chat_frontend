@@ -17,33 +17,38 @@ function getDiscussions() {
     .then(res => res.json())
     .then(json => {
     // JSON data will be nested due to Serializer
-    json.data.forEach(discussion => {
-    //    console.log(discussion.relationships.comments.data[0].id)
-  
-        
-    // console.log(discussion.relationships.comments.data[0].id)
-    // console.log(discussion)
-    // console.log(discussion.relationships.comments.data.length)
-       let numberOfCommentsPerDiscussion = discussion.relationships.comments.data.length
+        json.data.forEach(discussion => {
 
-    if (numberOfCommentsPerDiscussion > 0){
-    //     console.log(discussion)
-    let commentId = discussion.relationships.comments.data[0].id
+    
+            let numberOfCommentsPerDiscussion = discussion.relationships.comments.data.length
 
-        for (i = 0; i >= numberOfCommentsPerDiscussion; i++){
-            commentIds.push(commentId)
-        }
+            if (numberOfCommentsPerDiscussion > 0){
+                
+                let commentId = parseInt(discussion.relationships.comments.data[0].id)
+            
 
-        let newDiscussion = new Discussion(discussion, discussion.attributes, commentIds)
-        document.querySelector('#discussion-container').innerHTML += newDiscussion.render()
-    }
-    else {
-        let newDiscussion = new Discussion(discussion, discussion.attributes, commentIds)
-        document.querySelector('#discussion-container').innerHTML += newDiscussion.render()
-    }
-})
-})
+                commentIds.push(commentId)
+
+                console.log(commentId)
+
+                let newDiscussion = new Discussion(discussion, discussion.attributes, commentIds)
+                document.querySelector('#discussion-container').innerHTML += newDiscussion.render()
+            }
+            else {
+                console.log("no comments")
+                let newDiscussion = new Discussion(discussion, discussion.attributes, commentIds)
+                document.querySelector('#discussion-container').innerHTML += newDiscussion.render()
+            }
+        })
+    })
 }
+
+// function getDiscussionComments(){
+//     let commentStrings = [];
+//     Discussion.getCommentIds()
+
+
+// }
 
 
 function getComments() {
