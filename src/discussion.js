@@ -1,6 +1,6 @@
 class Discussion {
 
-    constructor(comment, commentAttributes){
+    constructor(discussion, discussionAttributes){
 
         this.id = discussion.id
         this.title = discussionAttributes.title
@@ -15,8 +15,7 @@ class Discussion {
         return  `
         <div data-id=${this.id}>
                 
-        <h3>discussion: ${this.discussion.title}</h3>
-        <h3>comment:${this.content}</h3>
+        <h3>discussion: ${this.title}</h3>
         
         </div>
         <br><br>`;              
@@ -24,4 +23,4 @@ class Discussion {
 
 }
 
-Comment.all = []
+Discussion.all = []
