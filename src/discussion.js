@@ -25,7 +25,14 @@ class Discussion {
         Comment.newCommentForm(this.id)
     }
 
-
+    renderComments() {
+        if (this.comments) {
+            this.comments.forEach(function(comment){
+                let newComment= new Comment(comment)
+                newComment.createCommentCard()
+            })
+        }
+    }
 
 
 }
