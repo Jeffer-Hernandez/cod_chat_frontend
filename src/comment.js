@@ -21,6 +21,20 @@ class Comment{
         Comment.makeComment(discussion_id)
     }
 
+    static makeComment(discussion_id) {
+        let newForm = document.getElementById('new-problem-form')
+        newForm.addEventListener('submit', function(e){
+            e.preventDefault()
+            apiService.postComment(e, discussion_id)
+                .then(json => {
+                    console.log(json)
+                    newForm.reset()
+                    let newComment= new Comment(json)
+                    newComment.createCommentCard()
+                })
+        })
+    }
+
 
    
 }
