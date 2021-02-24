@@ -2,11 +2,7 @@ const discussionEndPoint = "http://localhost:3000/api/v1/discussions";
 const commentEndPoint = "http://localhost:3000/api/v1/comments";
 
 document.addEventListener('DOMContentLoaded', () => {
-    getComments()
-    getDiscussions()
-  
-  const createCommentForm = document.querySelector("#create-comment-form")
-  createCommentForm.addEventListener("submit", (e) => createFormHandler(e))
+
 
 
 });
