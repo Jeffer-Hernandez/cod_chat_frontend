@@ -4,9 +4,12 @@ class Comment {
 
         this.id = comment.id
         this.content = commentAttributes.content
-        this.discussion = discussionId
-        Comment.all.push(this)
+        this.discussionId = discussionId
+        this.discussionTitle = commentAttributes.discussion.title
 
+
+        Comment.all.push(this)
+        // console.log(this.discussion)
     }
 
     static findById(id) {
@@ -15,13 +18,29 @@ class Comment {
 
     
 
-    // render(){
-    //     return  `
-    //     <div data-id=${this.id}>
-    //     <h3>comment: ${this.content}</h3>
-    //     </div>
-    //     <br><br>`;             
-    // }
+    renderComment(){
+        return  `
+        <div data-id=${this.id}>
+        <h3>comment: ${this.content}</h3>
+        </div>
+        <br><br>`;             
+    }
+
+      
+    renderDiscussionCard(){
+
+        return  `
+        <div data-id=${this.discussionId}>
+                
+        <h3>discussion: ${this.discussionTitle}</h3>
+
+        <h3>comments: ${this.content}</h3>
+
+        <div id="comment-container"></div>
+
+        </div>
+        <br><br>`;              
+    }
 
 
     renderUpdateForm() {

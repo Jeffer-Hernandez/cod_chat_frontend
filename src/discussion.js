@@ -1,9 +1,9 @@
 class Discussion {
 
-    constructor(discussion, discussionAttributes, discussionComments){
+    constructor(discussionId, discussionAttributesTitle, discussionComments){
 
-        this.id = discussion.id
-        this.title = discussionAttributes.title
+        this.id = discussionId
+        this.title = discussionAttributesTitle
         this.comments = discussionComments
         
         Discussion.all.push(this)
@@ -11,6 +11,10 @@ class Discussion {
 
     }
 
+    static findById(id) {
+        let thisDiscussion =  Discussion.all.find(discussion => id === id);
+        return thisDiscussion
+    }
   
     renderDiscussionCard(){
 
@@ -20,6 +24,23 @@ class Discussion {
         <h3>discussion: ${this.title}</h3>
 
         <h3>comments: ${this.comments}</h3>
+
+
+
+        </div>
+        <br><br>`;              
+    }
+
+    renderNoDiscussionCard(){
+
+        return  `
+        <div data-id=${this.id}>
+                
+        <h3>discussion: ${this.title}</h3>
+
+        <h3>comments: Soo empty..</h3>
+
+
 
         </div>
         <br><br>`;              
