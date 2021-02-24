@@ -16,14 +16,16 @@ class Discussion {
     displayDiscussion() {
         let body = document.getElementById('container')
         body.innerHTML = ''
-        let userGreeting = document.createElement('p')
-        userGreeting.setAttribute('data-id', this.id)
-        let id = userGreeting.dataset.id
-        userGreeting.innerHTML = `<h1>Hey, ${this.name}!</h1>`
-        body.append(userGreeting)
-        this.renderProblems()
-        Problem.newProblemForm(this.id)
+        let discussionTitle = document.createElement('p')
+        discussionTitle.setAttribute('data-id', this.id)
+        let id = discussionTitle.dataset.id
+        discussionTitle.innerHTML = `<h1>${this.title}!</h1>`
+        body.append(discussionTitle)
+        this.renderComments()
+        Comment.newCommentForm(this.id)
     }
+
+
 
 
 }
