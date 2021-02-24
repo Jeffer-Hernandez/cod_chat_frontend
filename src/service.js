@@ -10,11 +10,22 @@ class ApiService {
         .then(res => res.json())   
         .then(json => {
         json.data.forEach(discussion => {
-            // console.log(discussion)
-            Discussion.openPage(discussion)
+            console.log(discussion)
+            let newDiscussion = new Discussion(discussion)
+            console.log(newDiscussion)
+            newDiscussion.displayDiscussion()
         })
         })
     }
+
+    // renderDiscussions() {
+    //     if (this.discussions) {
+    //         this.discussions.forEach(function(discussion){
+    //             let newDiscussion = new Discussion(discussion)
+    //             newDiscussion.displayDiscussion()
+    //         })
+    //     }
+    // }
 
 
     //create
