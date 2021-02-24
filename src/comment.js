@@ -6,6 +6,7 @@ class Comment {
         this.content = commentAttributes.content
         this.discussion = discussionId
         Comment.all.push(this)
+
     }
 
     static findById(id) {
