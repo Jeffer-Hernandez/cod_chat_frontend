@@ -9,43 +9,20 @@ class Discussion {
         this.comments = discussion.comments
         
         Discussion.all.push(this)
-        console.log(this.comments)
+        // console.log(this.comments)
 
     }
 
-    static findById(id) {
-        let thisDiscussion =  Discussion.all.find(discussion => id === id);
-        return thisDiscussion
-    }
-  
-    renderDiscussionCard(){
-
-        return  `
-        <div data-id=${this.id}>
-                
-        <h3>discussion: ${this.title}</h3>
-
-        <h3>comments: ${this.comments}</h3>
-
-
-
-        </div>
-        <br><br>`;              
-    }
-
-    renderNoDiscussionCard(){
-
-        return  `
-        <div data-id=${this.id}>
-                
-        <h3>discussion: ${this.title}</h3>
-
-        <h3>comments: Soo empty..</h3>
-
-
-
-        </div>
-        <br><br>`;              
+    displayDiscussion() {
+        let body = document.getElementById('container')
+        body.innerHTML = ''
+        let userGreeting = document.createElement('p')
+        userGreeting.setAttribute('data-id', this.id)
+        let id = userGreeting.dataset.id
+        userGreeting.innerHTML = `<h1>Hey, ${this.name}!</h1>`
+        body.append(userGreeting)
+        this.renderProblems()
+        Problem.newProblemForm(this.id)
     }
 
 
