@@ -1,39 +1,30 @@
 class Discussion {
 
-    constructor(discussion, discussionAttributes, commentIds){
+    constructor(discussion, discussionAttributes, discussionComments){
 
         this.id = discussion.id
         this.title = discussionAttributes.title
-        this.comments = commentIds
+        this.comments = discussionComments
         
         Discussion.all.push(this)
-        
-    }
-
-    getCommentIds(){
-        return this.comments
-    }
-
-
-    findCommentById(id){
-        comment = Comment.findById(id)
-        
+        console.log(this.comments)
 
     }
 
   
-    render(comment){
+    renderDiscussionCard(){
+
         return  `
         <div data-id=${this.id}>
                 
         <h3>discussion: ${this.title}</h3>
 
-
-        <h3>comments: ${comment}</h3>
+        <h3>comments: ${this.comments}</h3>
 
         </div>
         <br><br>`;              
     }
+
 
 }
 
