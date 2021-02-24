@@ -1,10 +1,12 @@
 class Discussion {
 
-    constructor(discussionId, discussionAttributesTitle, discussionComments){
+    static allDiscussions = []
 
-        this.id = discussionId
-        this.title = discussionAttributesTitle
-        this.comments = discussionComments
+    constructor(discussion){
+
+        this.id = discussion.id 
+        this.title = discussion.title
+        this.comments = discussion.comments
         
         Discussion.all.push(this)
         console.log(this.comments)
@@ -48,5 +50,3 @@ class Discussion {
 
 
 }
-
-Discussion.all = []
