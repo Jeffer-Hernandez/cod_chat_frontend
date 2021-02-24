@@ -53,6 +53,6 @@ class ApiService {
     fetch(`${this.baseUrl}/comments/${e.target.parentNode.dataset.id}`, {
         method: "DELETE"
     })
-}      
+    }      
 
 }
