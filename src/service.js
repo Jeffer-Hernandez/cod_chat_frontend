@@ -4,27 +4,18 @@ class ApiService {
         this.baseUrl = `http://localhost:3000/api/v1`
     }
 
-    //read/ create
-    findOrCreateDiscussion(e){
-        return fetch(`${this.baseUrl}/discussions`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(
-                {
-                    discussion: {
-                        title: e.target.children[1].value
-                    }
-                })
-            })
-                .then(resp => {
-                    let json = resp.json()
-                    console.log(json) 
-                    return json     
-                })
+    //read
+    findDiscussion(){
+        fetch(`${this.baseUrl}/discussions`)
+        .then(res => res.json())   
+        .then(json => {
+        json.data.forEach(discussion => {
+            // console.log(discussion)
+            Discussion.openPage(discussion)
+        })
+        })
     }
+
 
     //create
     postComment(e, discussion_id){
