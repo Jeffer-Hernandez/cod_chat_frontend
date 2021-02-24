@@ -11,32 +11,23 @@
 </head>
 <body>
 
-    <div class="form-container">
+    <div class="container" id="container">
 
-        <form id="create-comment-form" style="">
-          <h3>Create a comment!</h3>
-          <br><br>
+        <div id="new-discussion-and-new-comment-container">
+            <form id="new-comment-form">
+                <label>Your comment:</label>
+                <input type="text" id="new-discussion-body"/>
+                <input type="submit"/>
+            </form>
+        </div>
 
-          
-          <textarea id='input-content' name="content" rows="8" cols="80" value="" placeholder="What's on your mind?"></textarea>
-          <br><br>
+    </div>
 
-      
-          <select id="discussions" name="discussions">
-            <option value="1">Loadouts</option>
-            <option value="2">Tournaments</option>
-            <option value="3">Community</option>
-            <option value="4">What's New?</option>
-          </select>
-          <br><br>
-      
-          <input id= 'create-button' type="submit" name="submit" value="Comment" class="submit">
-        </form>
-    
+    <div id="comments-container" class="comments-container">
     </div>
 
 
-    <div id="discussion-container"></div>
+ 
     
 
 </body>
