@@ -34,9 +34,7 @@ class Discussion {
         if (this.comments) {
             let discussion_id = this.id
             this.comments.forEach(function(comment){
-                
                 let newComment= new Comment(comment)
-                console.log(newComment)
                 newComment.displayCommentCard(discussion_id)
             })
         }
