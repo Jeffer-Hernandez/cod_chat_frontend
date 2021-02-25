@@ -81,8 +81,10 @@ class Comment{
         let commentElement = document.createElement('div')
         commentElement.setAttribute('id', 'comment-card')
         commentElement.dataset.id = parseInt(this.id)
-        commentElement.innerHTML = `<h3>${this.content}</h3>`
-           
+        commentElement.innerHTML = 
+        `<h3>${this.content}</h3>
+        <button type="button" id="${this.id}" class="delete-problem"> Delete </button>`
+
         commentContainer.append(commentElement)
   
     }
