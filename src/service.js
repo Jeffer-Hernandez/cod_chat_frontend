@@ -33,11 +33,9 @@ class ApiService {
         })
         .then(response => response.json())
         .then(comment => {
-        console.log(comment.data.attributes.content)
-        // let commentData = comment.data
+        // console.log(comment.data.attributes.content)
 
         let newComment = new Comment(comment)
-        console.log(newComment)
         newComment.displayCommentCard(discussion_id)
 
         })
