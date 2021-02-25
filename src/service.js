@@ -37,7 +37,6 @@ class ApiService {
 
         let newComment = new Comment(comment)
         newComment.displayCommentCard(discussion_id)
-
         })
     }
 
