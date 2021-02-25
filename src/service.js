@@ -20,8 +20,6 @@ class ApiService {
         // Comment.newCommentForm(this.id)
     }
 
-
-
     //create
     postFetch(content, discussion_id){
         const bodyData = {content, discussion_id}
