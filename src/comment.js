@@ -57,7 +57,6 @@ class Comment{
 
 
     displayCommentCard(discussion_id) {
-        console.log(discussion_id)
         let commentContainer = document.querySelector(`[data-id=${CSS.escape(discussion_id)}]`)
         let commentElement = document.createElement('div')
         commentElement.setAttribute('id', 'comment-card')
