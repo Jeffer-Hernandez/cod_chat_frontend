@@ -1,7 +1,6 @@
 class Comment{
 
     constructor(comment){
-        console.log(comment.id)
 
         if (comment.content){
             this.id = comment.id
@@ -12,15 +11,8 @@ class Comment{
             this.content = comment.data.attributes.content
 
         }
-        
-        // console.log(comment.content)
-        // else if (comment.attributes)
-        // console.log(commentDataAttributes)
-        // this.content = comment.data.attributes.content
-        // this.discussionTitle = comment.attributes.discussion.title
-        // console.log(comment.attributes.content)
+ 
         Comment.all.push(this)
-        // console.log(comment.discussion_id)
     }
 
     static newCommentForm() {
@@ -66,10 +58,7 @@ class Comment{
 
     displayCommentCard(discussion_id) {
         console.log(discussion_id)
-        // document.querySelector("#discussion-card")
-        // console.log(document.querySelector("#discussion-card"))
-        let commentContainer = document.getElementById('discussion-card')
-        // let commentContainer = document.getElementById('data-id=')
+        let commentContainer = document.querySelector(`[data-id=${CSS.escape(discussion_id)}]`)
         let commentElement = document.createElement('div')
         commentElement.setAttribute('id', 'comment-card')
         commentElement.dataset.id = parseInt(this.id)
@@ -79,7 +68,6 @@ class Comment{
         commentContainer.append(commentElement)
         let button = document.getElementById(`${this.id}`)
         this.delete(button)
-  
     }
 
     delete(button){
