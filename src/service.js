@@ -44,11 +44,11 @@ class ApiService {
     }
 
 
-    // //delete
-    // deleteComment(e) {
-    // fetch(`${this.baseUrl}/comments/${e.target.parentNode.dataset.id}`, {
-    //     method: "DELETE"
-    // })
-    // }      
+    //delete
+    deleteComment(e) {
+    fetch(`${this.baseUrl}/comments/${e.target.parentNode.dataset.id}`, {
+        method: "DELETE"
+    })
+    }      
 
 }
