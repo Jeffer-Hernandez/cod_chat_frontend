@@ -45,6 +45,7 @@ class Comment{
         body.insertAdjacentHTML('beforeend', form)
         // console.log(this.content)
         this.newPostComment()
+        
     }
 
     static newPostComment(discussion_id) {
@@ -57,17 +58,8 @@ class Comment{
 
 
             apiService.postFetch(content, discussion_id)
-                // .then(json => {
-            //         console.log(json)
-            //         newForm.reset()
-            //         let newComment= new Comment(json)
-            //         newComment.createCommentCard()
-            //     })
-            //     commentData = comment.data
-  // render JSON response
-//   let newComment = new Comment(commentData, commentData.attributes)
+            document.getElementById("new-comment-form").reset();
 
-//   document.querySelector('#discussion-container').innerHTML += newComment.render()
         })
     }
 
@@ -84,24 +76,21 @@ class Comment{
         commentElement.innerHTML = 
         `<h3>${this.content}</h3>
         <button type="button" id="${this.id}" class="delete-problem"> Delete </button>`
-
         commentContainer.append(commentElement)
+        let button = document.getElementById(`${this.id}`)
+        this.delete(button)
   
     }
 
-    // deleteCommentForm(){
-    //     let comments = document.getElementsByClassName("#comments-container")
-    //     let button = document.getElementById(`${this.id}`)
-    //     this.delete(button)
-    // }
+    delete(button){
+        button.addEventListener('click', function(e){
+            e.preventDefault()
+            apiService.deleteComment(e)
+                e.target.parentElement.remove();
+        })
+        
+    }
 
-    // delete(button){
-    //     button.addEventListener('click', function(e){
-    //         e.preventDefault()
-    //         apiService.deleteComment(e)
-    //             e.target.parentElement.remove();
-    //     })
-    // }
    
 }
 
